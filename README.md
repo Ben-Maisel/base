@@ -33,24 +33,6 @@ Restart PowerShell, then create a new project with:
 git-create <repo-name>
 ```
 
-
-
-### Bash / Macos
-Install the git create command (one-time)
-
-```bash
-git config --global alias.create '!f(){ \
-  name="$1"; \
-  [ -z "$name" ] && echo "usage: git create <repo-name>" && exit 1; \
-  gh repo create "$name" --template Ben-Maisel/base --private --clone; \
-}; f'
-
-```
-After installing, create a new project with:
-```bash
-git create <repo-name>
-```
-
 ### Option 2 (fall back)
 ```bash
 git clone https://github.com/Ben-Maisel/base.git <repo-name>
