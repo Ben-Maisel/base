@@ -16,7 +16,13 @@ function git-create {
 
   git clone https://github.com/Ben-Maisel/base.git $Name | Out-Null
   Set-Location $Name
-  wsl bash -lc "./init.sh $Name"
+
+  wsl bash -lc "./init.sh"
+
+  git init | Out-Null
+  git branch -M main
+  git add .
+  git commit -m "Initial commit" | Out-Null
 }
 ```
 Restart PowerShell, then create a new project with:
