@@ -1,2 +1,1 @@
-# base
-Empty Project Starter
+# empty project starter
