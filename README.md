@@ -1,7 +1,5 @@
 ### PowerShell
 
-Requires WSL.
-
 Open your PowerShell profile (one-time):
 ```bash
 notepad $PROFILE.CurrentUserAllHosts
