@@ -4,7 +4,7 @@ Requires WSL.
 
 Open your PowerShell profile (one-time):
 ```bash
-notepad $PROFILE
+notepad $PROFILE.CurrentUserAllHosts
 ```
 Add the following:
 ```bash
