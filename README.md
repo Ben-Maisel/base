@@ -14,11 +14,25 @@ function git-create {
     [string]$Name
   )
 
+  # Clone starter
   git clone https://github.com/Ben-Maisel/base.git $Name | Out-Null
   Set-Location $Name
 
+  # Detach from starter (bash via WSL)
   wsl bash -lc "./init.sh"
 
+  # Reset README
+  Remove-Item README.md -ErrorAction SilentlyContinue
+@"
+# $Name
+
+Project description.
+
+## Setup
+Describe setup here.
+"@ | Set-Content README.md
+
+  # Fresh git repo (Windows Git only)
   git init | Out-Null
   git branch -M main
   git add .
