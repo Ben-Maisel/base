@@ -31,6 +31,49 @@ Restart PowerShell, then create a new project with:
 git-create <repo-name>
 ```
 
+### Mac (zsh)
+Open your shell profile (one-time):
+```bash
+nano ~/.zshrc
+```
+Add this function
+```bash
+git-create () {
+  if [ -z "$1" ]; then
+    echo "usage: git-create <repo-name>"
+    return 1
+  fi
+
+  NAME="$1"
+
+  # Clone the base repo
+  git clone https://github.com/Ben-Maisel/base.git "$NAME" >/dev/null
+  cd "$NAME" || return 1
+
+  # Remove base repo history completely
+  rm -rf .git
+
+  # Optional: run init script if present
+  if [ -f init.sh ]; then
+    bash init.sh
+  fi
+
+  # Fresh git repo
+  git init >/dev/null
+  git branch -M main
+  git add .
+  git commit -m "Initial commit" >/dev/null
+}
+```
+Reload your shell
+```bash
+source ~/.zshrc
+```
+Use it
+```bash
+git-create <repo-name>
+```
+
 ### Option 2 (fall back)
 ```bash
 git clone https://github.com/Ben-Maisel/base.git <repo-name>
